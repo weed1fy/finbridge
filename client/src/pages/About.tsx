@@ -5,31 +5,43 @@ const teamMembers = [
     title: "Chairman & CEO",
     description:
       "Provides overall vision and direction, combining entrepreneurial drive with strategic leadership for long-term value creation.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
   {
     title: "Chief Investment Officer",
     description:
       "Leads investment strategy, overseeing portfolio design, market research, and asset allocation with data-driven insights.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
   {
     title: "Chief Technology Officer",
     description:
       "Drives technological innovation, building advanced infrastructure for our stock screener platform.",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
   {
     title: "Chief Risk Officer",
     description:
       "Manages risk across all investment areas, balancing opportunity with caution through rigorous analysis.",
+    image:
+      "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
   {
     title: "Chief Compliance Officer",
     description:
       "Ensures operations meet highest ethics standards and regulatory requirements, strengthening trust.",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
   {
     title: "Head of Sales & Client Relations",
     description:
       "Leads outreach, partnerships, and client engagement, building relationships that power our growth.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
   },
 ];
 
