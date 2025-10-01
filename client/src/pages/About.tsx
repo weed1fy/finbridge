@@ -2,46 +2,34 @@ import { Leaf } from "lucide-react";
 
 const teamMembers = [
   {
-    title: "Chairman & CEO",
-    description:
-      "Provides overall vision and direction, combining entrepreneurial drive with strategic leadership for long-term value creation.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Chairman & CEO',
+    description: 'Provides overall vision and direction, combining entrepreneurial drive with strategic leadership for long-term value creation.',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
   {
-    title: "Chief Investment Officer",
-    description:
-      "Leads investment strategy, overseeing portfolio design, market research, and asset allocation with data-driven insights.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Chief Investment Officer',
+    description: 'Leads investment strategy, overseeing portfolio design, market research, and asset allocation with data-driven insights.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
   {
-    title: "Chief Technology Officer",
-    description:
-      "Drives technological innovation, building advanced infrastructure for our stock screener platform.",
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Chief Technology Officer',
+    description: 'Drives technological innovation, building advanced infrastructure for our stock screener platform.',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
   {
-    title: "Chief Risk Officer",
-    description:
-      "Manages risk across all investment areas, balancing opportunity with caution through rigorous analysis.",
-    image:
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Chief Risk Officer',
+    description: 'Manages risk across all investment areas, balancing opportunity with caution through rigorous analysis.',
+    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
   {
-    title: "Chief Compliance Officer",
-    description:
-      "Ensures operations meet highest ethics standards and regulatory requirements, strengthening trust.",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Chief Compliance Officer',
+    description: 'Ensures operations meet highest ethics standards and regulatory requirements, strengthening trust.',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
   {
-    title: "Head of Sales & Client Relations",
-    description:
-      "Leads outreach, partnerships, and client engagement, building relationships that power our growth.",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    title: 'Head of Sales & Client Relations',
+    description: 'Leads outreach, partnerships, and client engagement, building relationships that power our growth.',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
   },
 ];
 
@@ -50,9 +38,7 @@ export default function About() {
     <section className="bg-muted min-h-screen py-20" data-testid="page-about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            About FINBRIDGE
-          </h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">About FINBRIDGE</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Bridging the gap between knowledge and capital markets
           </p>
@@ -60,16 +46,9 @@ export default function About() {
 
         {/* Philosophy */}
         <div className="bg-card rounded-xl p-8 border border-border mb-12">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">
-            Our Philosophy
-          </h3>
+          <h3 className="text-2xl font-semibold text-foreground mb-4">Our Philosophy</h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We believe investing should be transparent, accessible, and rooted
-            in sound principles. Our philosophy centers on empowering
-            individuals through knowledge and data-driven tools, enabling
-            smarter and more confident decisions. By combining modern screening
-            methods with long-term strategies, we help investors navigate
-            markets with clarity and purpose.
+            We believe investing should be transparent, accessible, and rooted in sound principles. Our philosophy centers on empowering individuals through knowledge and data-driven tools, enabling smarter and more confident decisions. By combining modern screening methods with long-term strategies, we help investors navigate markets with clarity and purpose.
           </p>
         </div>
 
@@ -80,17 +59,9 @@ export default function About() {
               <Leaf className="text-white" size={28} />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-4">
-                Our Commitment to ESG
-              </h3>
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Our Commitment to ESG</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We recognize that true investment success goes beyond financial
-                returns. That's why we prioritize Environmental, Social, and
-                Governance (ESG) principles, focusing on companies that are not
-                only profitable but also responsible. Our commitment is to
-                direct capital toward businesses that create sustainable value,
-                foster innovation, and contribute positively to society and the
-                environment.
+                We recognize that true investment success goes beyond financial returns. That's why we prioritize Environmental, Social, and Governance (ESG) principles, focusing on companies that are not only profitable but also responsible. Our commitment is to direct capital toward businesses that create sustainable value, foster innovation, and contribute positively to society and the environment.
               </p>
             </div>
           </div>
@@ -98,27 +69,17 @@ export default function About() {
 
         {/* Team */}
         <div className="mb-12">
-          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">
-            Our Team
-          </h3>
+          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Our Team</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-xl p-6 border border-border hover-lift"
-                data-testid={`card-team-${index}`}
-              >
+              <div key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-team-${index}`}>
                 <img
                   src={member.image}
                   alt={member.title}
                   className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                 />
-                <h4 className="text-lg font-bold text-foreground text-center mb-2">
-                  {member.title}
-                </h4>
-                <p className="text-sm text-muted-foreground text-center">
-                  {member.description}
-                </p>
+                <h4 className="text-lg font-bold text-foreground text-center mb-2">{member.title}</h4>
+                <p className="text-sm text-muted-foreground text-center">{member.description}</p>
               </div>
             ))}
           </div>
