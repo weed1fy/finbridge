@@ -1,0 +1,125 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Filter, Users, GraduationCap } from "lucide-react";
+import { Link } from "wouter";
+import MarketWidgets from "@/components/MarketWidgets";
+
+export default function Home() {
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden" data-testid="section-hero">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
+            alt="Modern financial district skyline"
+            className="w-full h-full object-cover opacity-20 dark:opacity-10"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Bringing Wall Street to <span className="text-primary">Every Street</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/screener">
+                <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening">
+                  Start Screening Stocks
+                  <ArrowRight className="inline ml-2" size={20} />
+                </button>
+              </Link>
+              <Link href="/about">
+                <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more">
+                  Learn More
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Market Widgets */}
+      <MarketWidgets />
+
+      {/* Features Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" data-testid="section-features">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4">Powerful Tools for Smart Investing</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Everything you need to make informed investment decisions in Pakistan's stock market
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Stock Screener */}
+          <motion.div
+            className="bg-card rounded-xl p-8 border border-border hover-lift"
+            whileHover={{ y: -4 }}
+            data-testid="card-feature-screener"
+          >
+            <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
+              <Filter className="text-white" size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-3">Stock Screener</h3>
+            <p className="text-muted-foreground mb-4">
+              Discover stocks with our advanced screening tool powered by 20+ performance and risk indicators. Designed for both beginners and experienced investors.
+            </p>
+            <Link href="/screener">
+              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-explore-screener">
+                Explore Screener <ArrowRight size={16} className="ml-2" />
+              </a>
+            </Link>
+          </motion.div>
+
+          {/* MAYS SMIF */}
+          <motion.div
+            className="bg-card rounded-xl p-8 border border-border hover-lift"
+            whileHover={{ y: -4 }}
+            data-testid="card-feature-smif"
+          >
+            <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
+              <Users className="text-white" size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-3">MAYS SMIF</h3>
+            <p className="text-muted-foreground mb-4">
+              Pakistan's first Student Managed Investment Fund. A unique opportunity for students to learn by managing a real portfolio.
+            </p>
+            <Link href="/smif">
+              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-join-smif">
+                Join Now <ArrowRight size={16} className="ml-2" />
+              </a>
+            </Link>
+          </motion.div>
+
+          {/* Education */}
+          <motion.div
+            className="bg-card rounded-xl p-8 border border-border hover-lift"
+            whileHover={{ y: -4 }}
+            data-testid="card-feature-learn"
+          >
+            <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
+              <GraduationCap className="text-white" size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-3">Learn Before Invest</h3>
+            <p className="text-muted-foreground mb-4">
+              Financial literacy is the foundation of smart investing. Access guides, courses, and insights to understand market concepts and strategies.
+            </p>
+            <Link href="/learn">
+              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-start-learning">
+                Start Learning <ArrowRight size={16} className="ml-2" />
+              </a>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
