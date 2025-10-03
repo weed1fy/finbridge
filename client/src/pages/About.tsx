@@ -1,6 +1,4 @@
 import { Leaf, Brain } from "lucide-react";
-
-import { Leaf, Brain } from "lucide-react";
 import { MotionContainer, MotionItem } from "@/components/Motion";
 
 const teamMembers = [
