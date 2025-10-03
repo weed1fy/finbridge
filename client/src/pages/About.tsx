@@ -1,5 +1,8 @@
 import { Leaf, Brain } from "lucide-react";
 
+import { Leaf, Brain } from "lucide-react";
+import { MotionContainer, MotionItem } from "@/components/Motion";
+
 const teamMembers = [
   {
     title: 'Chairman & CEO',
@@ -35,7 +38,7 @@ const teamMembers = [
 
 export default function About() {
   return (
-    <section className="bg-muted min-h-screen py-20" data-testid="page-about">
+    <MotionContainer className="bg-muted min-h-screen py-20" data-testid="page-about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">About <span style={{ fontFamily: 'Times New Roman, serif' }}>FINBRIDGE</span></h2>
@@ -45,7 +48,7 @@ export default function About() {
         </div>
 
         {/* Philosophy */}
-        <div className="bg-card rounded-xl p-8 border border-border mb-12 hover-lift transition-transform duration-200">
+        <MotionItem className="bg-card rounded-xl p-8 border border-border mb-12 hover-lift transition-transform duration-200">
           <div className="flex items-start">
             <div className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, rgb(54, 143, 231) 0%, rgb(25, 117, 210) 100%)' }}>
               <Brain className="text-white" size={28} />
@@ -58,10 +61,10 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
+        </MotionItem>
 
         {/* ESG Commitment */}
-        <div className="bg-card rounded-xl p-8 border border-border mb-12 hover-lift transition-transform duration-200">
+        <MotionItem className="bg-card rounded-xl p-8 border border-border mb-12 hover-lift transition-transform duration-200">
           <div className="flex items-start space-x-4">
             <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
               <Leaf className="text-white" size={28} />
@@ -73,14 +76,14 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </MotionItem>
 
         {/* Team */}
         <div className="mb-12">
           <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Our Team</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-team-${index}`}>
+              <MotionItem key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-team-${index}`}>
                 <img
                   src={member.image}
                   alt={member.title}
@@ -88,11 +91,11 @@ export default function About() {
                 />
                 <h4 className="text-lg font-bold text-foreground text-center mb-2">{member.title}</h4>
                 <p className="text-sm text-muted-foreground text-center">{member.description}</p>
-              </div>
+              </MotionItem>
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </MotionContainer>
   );
 }
