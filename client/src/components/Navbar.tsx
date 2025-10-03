@@ -1,6 +1,5 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { TrendingUp } from "lucide-react";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -17,14 +16,11 @@ export default function Navbar() {
     <header className="glass sticky top-0 z-50 shadow-sm" data-testid="navbar">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" data-testid="link-home">
-            <div className="flex items-center space-x-2 cursor-pointer">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                <TrendingUp className="text-white" size={20} />
-              </div>
-              <span className="text-xl font-bold text-foreground">FINBRIDGE</span>
+          <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/" data-testid="link-home">
+            <div className="flex items-center cursor-pointer">
+              <span className="ml-2 text-foreground" style={{ font: '700 20px/28px "Times New Roman", serif' }}>FINBRIDGE</span>
             </div>
-          </Link>
+          </a>
 
           <div className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
