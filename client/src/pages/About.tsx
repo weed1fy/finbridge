@@ -1,5 +1,3 @@
-import { Leaf } from "lucide-react";
-
 import { Leaf, Brain } from "lucide-react";
 
 const teamMembers = [
