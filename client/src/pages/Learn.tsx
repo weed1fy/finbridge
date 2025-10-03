@@ -1,5 +1,7 @@
 import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign } from "lucide-react";
 
+import { MotionContainer, MotionItem } from "@/components/Motion";
+
 const indicators = [
   {
     icon: BarChart3,
