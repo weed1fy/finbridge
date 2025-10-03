@@ -59,7 +59,7 @@ const indicators = [
 
 export default function Learn() {
   return (
-    <section className="bg-background min-h-screen py-20" data-testid="page-learn">
+    <MotionContainer className="bg-background min-h-screen py-20" data-testid="page-learn">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Learn Before You Invest</h2>
@@ -72,7 +72,7 @@ export default function Learn() {
           {indicators.map((indicator, index) => {
             const Icon = indicator.icon;
             return (
-              <div key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-indicator-${index}`}>
+              <MotionItem key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-indicator-${index}`}>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <Icon className="text-primary" size={24} />
                 </div>
@@ -82,7 +82,7 @@ export default function Learn() {
                   <div className="text-xs text-muted-foreground mb-1">Formula</div>
                   <div className="font-mono text-sm text-foreground">{indicator.formula}</div>
                 </div>
-              </div>
+              </MotionItem>
             );
           })}
         </div>
@@ -93,6 +93,6 @@ export default function Learn() {
           </button>
         </div>
       </div>
-    </section>
+    </MotionContainer>
   );
 }
