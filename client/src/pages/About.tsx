@@ -38,7 +38,7 @@ export default function About() {
     <section className="bg-muted min-h-screen py-20" data-testid="page-about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">About FINBRIDGE</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">About <span style={{ fontFamily: 'Times New Roman, serif' }}>FINBRIDGE</span></h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Bridging the gap between knowledge and capital markets
           </p>
@@ -46,10 +46,21 @@ export default function About() {
 
         {/* Philosophy */}
         <div className="bg-card rounded-xl p-8 border border-border mb-12">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">Our Philosophy</h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            We believe investing should be transparent, accessible, and rooted in sound principles. Our philosophy centers on empowering individuals through knowledge and data-driven tools, enabling smarter and more confident decisions. By combining modern screening methods with long-term strategies, we help investors navigate markets with clarity and purpose.
-          </p>
+          <div className="flex items-start">
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, rgb(54, 143, 231) 0%, rgb(25, 117, 210) 100%)' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+              </svg>
+            </div>
+
+            <div style={{ marginLeft: 16 }}>
+              <div className="text-2xl font-semibold text-foreground mb-4">Our Philosophy</div>
+              <div className="text-lg text-muted-foreground" style={{ lineHeight: '1.8' }}>
+                We believe investing should be transparent, accessible, and rooted in sound principles. Our philosophy centers on empowering individuals through knowledge and data-driven tools, enabling smarter and more confident decisions. By combining modern screening methods with long-term strategies, we help investors navigate markets with clarity and purpose.
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* ESG Commitment */}

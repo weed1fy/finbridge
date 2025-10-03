@@ -1,17 +1,4 @@
-import { Link, useLocation } from "wouter";
-import { motion } from "framer-motion";
-
 export default function Navbar() {
-  const [location] = useLocation();
-
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/screener", label: "Screener" },
-    { href: "/smif", label: "MAYS SMIF" },
-    { href: "/about", label: "About Us" },
-    { href: "/learn", label: "Learn" },
-  ];
-
   return (
     <header className="glass sticky top-0 z-50 shadow-sm" data-testid="navbar">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,35 +9,42 @@ export default function Navbar() {
             </div>
           </a>
 
-          <div className="hidden md:flex space-x-6">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <motion.a
-                  className={`text-sm font-medium transition-colors relative ${
-                    location === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  whileHover={{ y: -2 }}
-                >
-                  {link.label}
-                  {location === link.href && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      layoutId="navbar-indicator"
-                    />
-                  )}
-                </motion.a>
-              </Link>
-            ))}
+          <div className="flex font-medium">
+            <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/" className="block">
+              <div style={{ font: '500 14px/20px Times New Roman, serif', position: 'relative', transitionDuration: '0.15s', transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                Home
+              </div>
+            </a>
+
+            <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/screener" className="block" style={{ marginLeft: '24px' }}>
+              <div style={{ font: '500 14px/20px Times New Roman, serif', position: 'relative', transitionDuration: '0.15s', transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                Screener
+              </div>
+            </a>
+
+            <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/smif" className="block" style={{ marginLeft: '24px' }}>
+              <div style={{ font: '500 14px/20px Times New Roman, serif', position: 'relative', transitionDuration: '0.15s', transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                MAYS SMIF
+              </div>
+            </a>
+
+            <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/about" className="block" style={{ marginLeft: '24px' }}>
+              <div style={{ position: 'relative', display: 'inline', transitionDuration: '0.15s', transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)', font: '500 14px/20px Times New Roman, serif' }}>
+                <div style={{ fontFamily: 'Times New Roman, serif' }}>About Us</div>
+                <div style={{ bottom: '-4px', fontWeight: 500, height: '2px', left: 0, position: 'absolute', right: 0 }} />
+              </div>
+            </a>
+
+            <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/learn" className="block" style={{ marginLeft: '24px' }}>
+              <div style={{ font: '500 14px/20px Times New Roman, serif', position: 'relative', transitionDuration: '0.15s', transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                Learn
+              </div>
+            </a>
           </div>
 
-          <button
-            className="px-4 py-2 gradient-primary text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
-            data-testid="button-get-started"
-          >
+          <div style={{ backgroundImage: 'linear-gradient(135deg, rgb(54, 143, 231) 0%, rgb(25, 117, 210) 100%)', borderRadius: '12px', color: 'rgb(255, 255, 255)', display: 'block', fontSize: '14px', fontWeight: 500, lineHeight: '20px', textDecoration: 'rgb(255, 255, 255)', transitionDuration: '0.15s', transitionProperty: 'opacity', transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)', backgroundColor: 'rgba(0, 0, 0, 0)', borderColor: 'rgba(0, 0, 0, 0)', padding: '8px 16px' }}>
             Get Started
-          </button>
+          </div>
         </div>
       </nav>
     </header>
