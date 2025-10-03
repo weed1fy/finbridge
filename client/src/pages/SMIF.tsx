@@ -1,6 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ArrowRight } from "lucide-react";
 import { formatCurrency } from "@/lib/stockData";
+import { MotionContainer, MotionItem } from "@/components/Motion";
 
 const performanceData = [
   { month: 'Jan', smif: 100, kse: 100 },
