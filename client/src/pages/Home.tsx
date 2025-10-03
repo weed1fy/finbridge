@@ -12,7 +12,7 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
             alt="Modern financial district skyline"
-            className="w-full h-full object-cover opacity-20 dark:opacity-10"
+            className="w-full h-full object-cover opacity-35 dark:opacity-25"
           />
         </div>
 
@@ -23,7 +23,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: 'Times New Roman, serif' }}>
               Bringing Wall Street to <span className="text-primary">Every Street</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
@@ -31,13 +31,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/screener">
-                <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening">
+                <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
                   Start Screening Stocks
                   <ArrowRight className="inline ml-2" size={20} />
                 </button>
               </Link>
               <Link href="/about">
-                <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more">
+                <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
                   Learn More
                 </button>
               </Link>
