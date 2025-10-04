@@ -26,9 +26,7 @@ export default function StockDetail() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">Stock Not Found</h2>
-          <Link href="/screener">
-            <a className="text-primary hover:underline">Back to Screener</a>
-          </Link>
+          <Link href="/screener" className="text-primary hover:underline">Back to Screener</Link>
         </div>
       </div>
     );
@@ -47,10 +45,8 @@ export default function StockDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/screener">
-            <button className="text-primary hover:text-primary/80 mb-4 inline-flex items-center" data-testid="button-back-to-screener">
-              <ArrowLeft size={20} className="mr-2" /> Back to Screener
-            </button>
+          <Link href="/screener" className="text-primary hover:text-primary/80 mb-4 inline-flex items-center" data-testid="button-back-to-screener">
+            <ArrowLeft size={20} className="mr-2" /> Back to Screener
           </Link>
           <div className="flex items-start justify-between">
             <div>
