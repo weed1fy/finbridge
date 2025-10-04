@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen" data-testid="section-hero">
+      <section ref={heroRef} className="relative overflow-hidden min-h-screen" data-testid="section-hero">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
