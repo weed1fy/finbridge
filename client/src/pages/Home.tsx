@@ -30,29 +30,19 @@ export default function Home() {
             </MotionItem>
 
             <MotionItem>
-              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto" style={{ font: 'italic 400 20px/28px "Times New Roman", serif' }}>
+              <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', margin: '0 auto 32px', font: 'italic 400 20px/28px "Times New Roman", serif' }}>
                 Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
-              </p>
-            </MotionItem>
-
-            <MotionItem>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link href="/screener" className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Start Screening Stocks
-                  <ArrowRight className="inline ml-2" size={20} />
-                </Link>
-                <Link href="/about" className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Learn More
-                </Link>
               </div>
             </MotionItem>
+
+            <MotionItem />
           </MotionContainer>
         </div>
       </section>
 
 
       {/* Features Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" data-testid="section-features">
+      <section className="max-w-7xl mx-auto px-6 py-20" data-testid="section-features">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Powerful Tools for Smart Investing</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
