@@ -1,18 +1,13 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Filter, Users, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
-import { useRef } from "react";
 import { MotionContainer, MotionItem } from "@/components/Motion";
 
 export default function Home() {
-  const heroRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start end", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   return (
     <div>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative overflow-hidden min-h-screen" data-testid="section-hero">
+      <section className="relative overflow-hidden min-h-screen" data-testid="section-hero">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
@@ -22,7 +17,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-0">
-          <motion.div style={{ opacity: heroOpacity, y: heroY }} className="w-full">
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="w-full">
             <MotionContainer className="text-center max-w-4xl mx-auto">
               <MotionItem>
                 <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
@@ -45,19 +40,6 @@ export default function Home() {
             </MotionContainer>
           </motion.div>
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-            <motion.button
-              aria-label="Scroll down"
-              onClick={() => document.getElementById('section-features')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-12 h-12 rounded-full flex items-center justify-center glass"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.6 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </motion.button>
-          </div>
         </div>
       </section>
 
