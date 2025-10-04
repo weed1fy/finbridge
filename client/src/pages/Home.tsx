@@ -1,9 +1,14 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Filter, Users, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
+import { useRef } from "react";
 import { MotionContainer, MotionItem } from "@/components/Motion";
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start end", "end start"] });
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   return (
     <div>
       {/* Hero Section */}
@@ -17,32 +22,48 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-0">
-          <MotionContainer className="text-center max-w-4xl mx-auto">
-            <MotionItem>
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
-                <div style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Bringing Wall Street to{" "}
-                </div>
-                <div className="inline font-bold" style={{ color: 'rgba(25, 95, 255, 1)' }}>
-                  Every Street
-                </div>
-              </h1>
-            </MotionItem>
+          <motion.div style={{ opacity: heroOpacity, y: heroY }} className="w-full">
+            <MotionContainer className="text-center max-w-4xl mx-auto">
+              <MotionItem>
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
+                  <div style={{ fontFamily: 'Times New Roman, serif' }}>
+                    Bringing Wall Street to{" "}
+                  </div>
+                  <div className="inline font-bold" style={{ color: 'rgba(25, 95, 255, 1)' }}>
+                    Every Street
+                  </div>
+                </h1>
+              </MotionItem>
 
-            <MotionItem>
-              <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', margin: '0 auto 32px', font: 'italic 400 20px/28px "Times New Roman", serif' }}>
-                Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
-              </div>
-            </MotionItem>
+              <MotionItem>
+                <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', margin: '0 auto 32px', font: 'italic 400 20px/28px "Times New Roman", serif' }}>
+                  Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
+                </div>
+              </MotionItem>
 
-            <MotionItem />
-          </MotionContainer>
+              <MotionItem />
+            </MotionContainer>
+          </motion.div>
+
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <motion.button
+              aria-label="Scroll down"
+              onClick={() => document.getElementById('section-features')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-12 h-12 rounded-full flex items-center justify-center glass"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.6 }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </motion.button>
+          </div>
         </div>
       </section>
 
 
       {/* Features Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20" data-testid="section-features">
+      <section id="section-features" className="max-w-7xl mx-auto px-6 py-20" data-testid="section-features">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Powerful Tools for Smart Investing</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
