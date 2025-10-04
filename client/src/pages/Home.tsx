@@ -37,16 +37,12 @@ export default function Home() {
 
             <MotionItem>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/screener">
-                  <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
-                    Start Screening Stocks
-                    <ArrowRight className="inline ml-2" size={20} />
-                  </button>
-                </a>
-                <Link href="/about">
-                  <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
-                    Learn More
-                  </button>
+                <Link href="/screener" className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
+                  Start Screening Stocks
+                  <ArrowRight className="inline ml-2" size={20} />
+                </Link>
+                <Link href="/about" className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
+                  Learn More
                 </Link>
               </div>
             </MotionItem>
@@ -74,10 +70,8 @@ export default function Home() {
             <p className="text-muted-foreground mb-4">
               Discover stocks with our advanced screening tool powered by 20+ performance and risk indicators. Designed for both beginners and experienced investors.
             </p>
-            <Link href="/screener">
-              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-explore-screener">
-                Explore Screener <ArrowRight size={16} className="ml-2" />
-              </a>
+            <Link href="/screener" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-explore-screener">
+              Explore Screener <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
 
@@ -90,10 +84,8 @@ export default function Home() {
             <p className="text-muted-foreground mb-4">
               Pakistan's first Student Managed Investment Fund. A unique opportunity for students to learn by managing a real portfolio.
             </p>
-            <Link href="/smif">
-              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-join-smif">
-                Join Now <ArrowRight size={16} className="ml-2" />
-              </a>
+            <Link href="/smif" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-join-smif">
+              Join Now <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
 
@@ -106,10 +98,8 @@ export default function Home() {
             <p className="text-muted-foreground mb-4">
               Financial literacy is the foundation of smart investing. Access guides, courses, and insights to understand market concepts and strategies.
             </p>
-            <Link href="/learn">
-              <a className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-start-learning">
-                Start Learning <ArrowRight size={16} className="ml-2" />
-              </a>
+            <Link href="/learn" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-start-learning">
+              Start Learning <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
         </div>
