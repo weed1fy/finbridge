@@ -7,52 +7,45 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden" data-testid="section-hero">
+      <section className="relative overflow-hidden min-h-screen" data-testid="section-hero">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
             alt="Modern financial district skyline"
-            className="w-full h-full object-cover opacity-35 dark:opacity-25"
+            className="w-full h-full object-cover object-center opacity-35 dark:opacity-25"
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <MotionContainer className="text-center max-w-4xl mx-auto">
-            <MotionItem>
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
-                <div style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Bringing Wall Street to{" "}
-                </div>
-                <div className="inline font-bold" style={{ color: 'rgba(25, 95, 255, 1)' }}>
-                  Every Street
-                </div>
-              </h1>
-            </MotionItem>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-0">
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="w-full">
+            <MotionContainer className="text-center max-w-4xl mx-auto">
+              <MotionItem>
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
+                  <div style={{ fontFamily: 'Times New Roman, serif' }}>
+                    Bringing Wall Street to{" "}
+                  </div>
+                  <div className="inline font-bold" style={{ color: 'rgba(25, 95, 255, 1)' }}>
+                    Every Street
+                  </div>
+                </h1>
+              </MotionItem>
 
-            <MotionItem>
-              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto" style={{ font: 'italic 400 20px/28px "Times New Roman", serif' }}>
-                Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
-              </p>
-            </MotionItem>
+              <MotionItem>
+                <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', margin: '0 auto 32px', font: 'italic 400 20px/28px "Times New Roman", serif' }}>
+                  Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
+                </div>
+              </MotionItem>
 
-            <MotionItem>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link href="/screener" className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Start Screening Stocks
-                  <ArrowRight className="inline ml-2" size={20} />
-                </Link>
-                <Link href="/about" className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg inline-flex items-center justify-center" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Learn More
-                </Link>
-              </div>
-            </MotionItem>
-          </MotionContainer>
+              <MotionItem />
+            </MotionContainer>
+          </motion.div>
+
         </div>
       </section>
 
 
       {/* Features Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" data-testid="section-features">
+      <section id="section-features" className="max-w-7xl mx-auto px-6 py-20" data-testid="section-features">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Powerful Tools for Smart Investing</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

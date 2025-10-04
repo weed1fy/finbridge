@@ -2,6 +2,11 @@ import { ArrowRight } from "lucide-react";
 import { formatCurrency } from "@/lib/stockData";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import { MotionContainer, MotionItem } from "@/components/Motion";
+import { useState } from "react";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 const performanceData = [
   { month: 'Jan', smif: 100, kse: 100 },
@@ -20,6 +25,7 @@ const holdings = [
 ];
 
 export default function SMIF() {
+  const [open, setOpen] = useState(false);
   return (
     <MotionContainer className="bg-background min-h-screen py-20" data-testid="page-smif">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,12 +56,12 @@ export default function SMIF() {
 
             <ResponsiveContainer width="100%" height={320}>
               <LineChart data={performanceData}>
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" />
-                <YAxis stroke="hsl(var(--muted-foreground))" />
+                <XAxis dataKey="month" stroke={getComputedStyle(document.documentElement).getPropertyValue('--muted-foreground') || '#64748b'} />
+                <YAxis stroke={getComputedStyle(document.documentElement).getPropertyValue('--muted-foreground') || '#64748b'} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'hsl(var(--card))',
-                    border: '1px solid hsl(var(--border))',
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card') || '#ffffff',
+                    border: `1px solid ${getComputedStyle(document.documentElement).getPropertyValue('--border') || '#e5e7eb'}`,
                     borderRadius: '8px',
                   }}
                 />
@@ -63,14 +69,14 @@ export default function SMIF() {
                 <Line
                   type="monotone"
                   dataKey="smif"
-                  stroke="hsl(var(--success))"
+                  stroke={getComputedStyle(document.documentElement).getPropertyValue('--success') || '#16a34a'}
                   strokeWidth={3}
                   name="MAYS SMIF Performance"
                 />
                 <Line
                   type="monotone"
                   dataKey="kse"
-                  stroke="hsl(var(--primary))"
+                  stroke={getComputedStyle(document.documentElement).getPropertyValue('--primary') || '#1d4ed8'}
                   strokeWidth={3}
                   name="KSE-100 Performance"
                 />
@@ -133,9 +139,41 @@ export default function SMIF() {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Gain hands-on experience managing real investments. Learn portfolio construction, risk management, and market analysis from industry professionals.
             </p>
-            <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-apply-smif">
-              Apply Now <ArrowRight className="inline ml-2" size={20} />
-            </button>
+
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-apply-smif">
+                  Apply Now <ArrowRight className="inline ml-2" size={20} />
+                </button>
+              </DialogTrigger>
+
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Apply to MAYS SMIF</DialogTitle>
+                  <DialogDescription>Please fill out the form below and our team will reach out.</DialogDescription>
+                </DialogHeader>
+
+                <form onSubmit={(e) => { e.preventDefault(); setOpen(false); (e.target as HTMLFormElement).reset(); }}>
+                  <div className="grid grid-cols-1 gap-4 mt-4">
+                    <Input name="name" placeholder="Full name" required />
+                    <Input name="email" type="email" placeholder="Email address" required />
+                    <Input name="university" placeholder="University / Affiliation" />
+                    <Textarea name="message" placeholder="Tell us why you want to join" />
+                  </div>
+
+                  <DialogFooter>
+                    <div className="flex w-full justify-end gap-2">
+                      <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                      </DialogClose>
+                      <Button type="submit">Submit</Button>
+                    </div>
+                  </DialogFooter>
+                </form>
+
+              </DialogContent>
+            </Dialog>
+
           </div>
         </MotionItem>
       </div>
