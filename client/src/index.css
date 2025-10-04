@@ -151,3 +151,7 @@
     @apply scale-110;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
