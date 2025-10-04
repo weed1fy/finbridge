@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Filter, Users, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
-import MarketWidgets from "@/components/MarketWidgets";
+import { MotionContainer, MotionItem } from "@/components/Motion";
 
 export default function Home() {
   return (
@@ -17,37 +17,43 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: 'Times New Roman, serif' }}>
-              Bringing Wall Street to <span className="text-primary">Every Street</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/screener">
-                <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Start Screening Stocks
-                  <ArrowRight className="inline ml-2" size={20} />
-                </button>
-              </Link>
-              <Link href="/about">
-                <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Learn More
-                </button>
-              </Link>
-            </div>
-          </motion.div>
+          <MotionContainer className="text-center max-w-4xl mx-auto">
+            <MotionItem>
+              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight" style={{ font: '700 60px/60px "Times New Roman", serif' }}>
+                <div style={{ fontFamily: 'Times New Roman, serif' }}>
+                  Bringing Wall Street to{" "}
+                </div>
+                <div className="inline font-bold" style={{ color: 'rgba(25, 95, 255, 1)' }}>
+                  Every Street
+                </div>
+              </h1>
+            </MotionItem>
+
+            <MotionItem>
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto" style={{ font: 'italic 400 20px/28px "Times New Roman", serif' }}>
+                Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
+              </p>
+            </MotionItem>
+
+            <MotionItem>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://b253b3edbe4d49088e637281fd3070a3-6fdc90ccde5b453c9bc61775a.fly.dev/screener">
+                  <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-start-screening" style={{ fontFamily: 'Times New Roman, serif' }}>
+                    Start Screening Stocks
+                    <ArrowRight className="inline ml-2" size={20} />
+                  </button>
+                </a>
+                <Link href="/about">
+                  <button className="px-8 py-4 glass-dark text-foreground rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-learn-more" style={{ fontFamily: 'Times New Roman, serif' }}>
+                    Learn More
+                  </button>
+                </Link>
+              </div>
+            </MotionItem>
+          </MotionContainer>
         </div>
       </section>
 
-      {/* Market Widgets */}
-      <MarketWidgets />
 
       {/* Features Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" data-testid="section-features">
@@ -60,11 +66,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Stock Screener */}
-          <motion.div
-            className="bg-card rounded-xl p-8 border border-border hover-lift"
-            whileHover={{ y: -4 }}
-            data-testid="card-feature-screener"
-          >
+          <MotionItem className="bg-card rounded-xl p-8 border border-border hover-lift" whileHover={{ y: -4 }} data-testid="card-feature-screener">
             <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
               <Filter className="text-white" size={28} />
             </div>
@@ -77,14 +79,10 @@ export default function Home() {
                 Explore Screener <ArrowRight size={16} className="ml-2" />
               </a>
             </Link>
-          </motion.div>
+          </MotionItem>
 
           {/* MAYS SMIF */}
-          <motion.div
-            className="bg-card rounded-xl p-8 border border-border hover-lift"
-            whileHover={{ y: -4 }}
-            data-testid="card-feature-smif"
-          >
+          <MotionItem className="bg-card rounded-xl p-8 border border-border hover-lift" whileHover={{ y: -4 }} data-testid="card-feature-smif">
             <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
               <Users className="text-white" size={28} />
             </div>
@@ -97,14 +95,10 @@ export default function Home() {
                 Join Now <ArrowRight size={16} className="ml-2" />
               </a>
             </Link>
-          </motion.div>
+          </MotionItem>
 
           {/* Education */}
-          <motion.div
-            className="bg-card rounded-xl p-8 border border-border hover-lift"
-            whileHover={{ y: -4 }}
-            data-testid="card-feature-learn"
-          >
+          <MotionItem className="bg-card rounded-xl p-8 border border-border hover-lift" whileHover={{ y: -4 }} data-testid="card-feature-learn">
             <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6">
               <GraduationCap className="text-white" size={28} />
             </div>
@@ -117,7 +111,7 @@ export default function Home() {
                 Start Learning <ArrowRight size={16} className="ml-2" />
               </a>
             </Link>
-          </motion.div>
+          </MotionItem>
         </div>
       </section>
     </div>
