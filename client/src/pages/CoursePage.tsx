@@ -15,12 +15,28 @@ export default function CoursePage({ title, docUrl }: CoursePageProps) {
     (async () => {
       try {
         setLoading(true);
-        const resp = await fetch(docUrl);
+        const resp = await fetch(docUrl, { cache: 'no-store' });
         if (!resp.ok) throw new Error('Failed to fetch course');
-        const text = await resp.text();
-        if (mounted) setHtml(text);
+
+        const contentType = resp.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          const text = await resp.text();
+          if (mounted) setHtml(text);
+        } else {
+          // assume binary DOCX, convert client-side using mammoth (loaded via CDN)
+          const arrayBuffer = await resp.arrayBuffer();
+          // @ts-ignore
+          const mammothLib = (window as any).mammoth;
+          if (mammothLib) {
+            const result = await mammothLib.convertToHtml({ arrayBuffer });
+            if (mounted) setHtml(result.value || '<p>No content</p>');
+          } else {
+            // fallback: show download link
+            if (mounted) setHtml(`<p class="text-muted-foreground">Unable to render document in-browser. <a href="${docUrl}" target="_blank" rel="noreferrer" class="text-primary underline">Download source</a></p>`);
+          }
+        }
       } catch (err) {
-        console.error('Error loading course HTML:', err);
+        console.error('Error loading course content:', err);
         if (mounted) setHtml('<p class="text-muted-foreground">Unable to load course content. Please try again later.</p>');
       } finally {
         if (mounted) setLoading(false);
