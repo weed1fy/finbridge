@@ -1,3 +1,4 @@
+import React from "react";
 import { MotionContainer } from "@/components/Motion";
 import { Link } from "wouter";
 
