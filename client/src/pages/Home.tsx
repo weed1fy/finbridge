@@ -31,7 +31,7 @@ export default function Home() {
               </MotionItem>
 
               <MotionItem>
-                <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', margin: '0 auto 32px', font: 'italic 400 20px/28px "Times New Roman", serif' }}>
+                <div style={{ fontFeatureSettings: 'normal', maxWidth: '768px', font: 'italic 400 20px/28px "Times New Roman", serif' }} className="mx-auto mb-8 mt-auto pb-5 lg:mt-0 lg:pb-0">
                   Our mission is to bridge the gap between knowledge and capital markets by offering cutting-edge screening tools and a first-of-its-kind Student Managed Investment Fund, fostering financial literacy and confident investing.
                 </div>
               </MotionItem>
@@ -64,7 +64,8 @@ export default function Home() {
               Discover stocks with our advanced screening tool powered by 20+ performance and risk indicators. Designed for both beginners and experienced investors.
             </p>
             <Link href="/screener" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-explore-screener">
-              Explore Screener <ArrowRight size={16} className="ml-2" />
+              <span className="font-serif lg:font-sans">Explore Screener </span>
+              <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
 
@@ -78,7 +79,8 @@ export default function Home() {
               Pakistan's first Student Managed Investment Fund. A unique opportunity for students to learn by managing a real portfolio.
             </p>
             <Link href="/smif" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-join-smif">
-              Join Now <ArrowRight size={16} className="ml-2" />
+              <span className="font-serif lg:font-sans">Join Now </span>
+              <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
 
@@ -92,7 +94,8 @@ export default function Home() {
               Financial literacy is the foundation of smart investing. Access guides, courses, and insights to understand market concepts and strategies.
             </p>
             <Link href="/learn" className="text-primary font-semibold hover:underline inline-flex items-center" data-testid="link-start-learning">
-              Start Learning <ArrowRight size={16} className="ml-2" />
+              <span className="font-serif lg:font-sans">Start Learning </span>
+              <ArrowRight size={16} className="ml-2" />
             </Link>
           </MotionItem>
         </div>
