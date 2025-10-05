@@ -102,27 +102,36 @@ export default function Learn() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {courses.map((course, i) => (
-              <MotionItem key={i} className="group bg-card rounded-xl p-6 border border-border hover-lift transition-transform transform hover:-translate-y-2">
-                <div className="flex items-start justify-between">
+              <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
+                <div className="flex flex-col h-full">
                   <div className="flex items-start">
-                    <div className={`w-16 h-16 rounded-xl p-2 flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-lg mr-4 transform transition-all group-hover:scale-105`}>
-                      <course.Icon size={20} />
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-md mr-4`}>
+                      <course.Icon size={18} />
                     </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-foreground mb-1">{course.title}</h4>
-                      <p className="text-sm text-muted-foreground">{course.blurb}</p>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-foreground mb-1">{course.title}</h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{course.blurb}</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
+
+                  <div className="mt-6 flex-1">
+                    {/* a short teaser area that mirrors the tips card structure */}
+                    <div className="bg-muted rounded-lg p-3">
+                      <div className="text-xs text-muted-foreground mb-1">What you'll learn</div>
+                      <ul className="list-disc pl-5 text-sm text-foreground">
+                        <li>Key concepts and frameworks</li>
+                        <li>Practical examples & charts</li>
+                        <li>Actionable takeaways</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">Duration <span className="font-mono text-foreground ml-2">1–2 hrs</span></span>
                     <Link href={course.href} className="inline-flex items-center px-3 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-95">
-                      Start Course <ArrowRight size={16} className="ml-2" />
+                      Start <ArrowRight size={14} className="ml-2" />
                     </Link>
                   </div>
-                </div>
-
-                <div className="mt-4 text-xs text-muted-foreground">
-                  <span className="inline-block align-middle">A short, well-structured course — estimated time: </span>
-                  <span className="font-mono text-foreground ml-2">1–2 hrs</span>
                 </div>
               </MotionItem>
             ))}
