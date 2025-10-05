@@ -105,8 +105,8 @@ export default function Learn() {
               <MotionItem key={i} className="group bg-card rounded-xl p-6 border border-border hover-lift transition-transform transform hover:-translate-y-2">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start">
-                    <div className={`w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-lg mr-4`}>
-                      <course.Icon size={24} />
+                    <div className={`w-16 h-16 rounded-xl p-2 flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-lg mr-4 transform transition-all group-hover:scale-105`}>
+                      <course.Icon size={20} />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-foreground mb-1">{course.title}</h4>
@@ -114,9 +114,8 @@ export default function Learn() {
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Free</span>
                     <Link href={course.href} className="inline-flex items-center px-3 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-95">
-                      Start
+                      Start Course <ArrowRight size={16} className="ml-2" />
                     </Link>
                   </div>
                 </div>
