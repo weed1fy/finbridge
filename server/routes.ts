@@ -35,7 +35,7 @@ function getRatioValue(stock: Stock, ratioKey: string, period: string = 'Current
       const cleanValue = value.replace(/[^0-9.-]/g, '');
       return parseFloat(cleanValue) || null;
     }
-    return value;
+    return value as number | null;
   } catch {
     return null;
   }
@@ -46,17 +46,17 @@ function calculateRiskLevel(stock: Stock): 'low' | 'medium' | 'high' {
   const debtEquity = getRatioValue(stock, 'Debt / Equity Ratio', 'Current');
   const currentRatio = getRatioValue(stock, 'Current Ratio', 'Current');
   const roe = getRatioValue(stock, 'Return on Equity (ROE)', 'Current');
-  
+
   // Low risk: Strong liquidity, low debt, consistent returns
   if (debtEquity !== null && debtEquity < 0.5 && currentRatio !== null && currentRatio > 2) {
     return 'low';
   }
-  
+
   // High risk: High debt or poor liquidity
   if ((debtEquity !== null && debtEquity > 1.5) || (currentRatio !== null && currentRatio < 1)) {
     return 'high';
   }
-  
+
   // Medium risk: Everything else
   return 'medium';
 }
@@ -212,6 +212,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.setHeader('Cache-Control', 'public, max-age=3600');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.send(buffer);
+    } catch (err) {
+      console.error('Error fetching remote document:', err);
+      res.status(500).json({ message: 'Error fetching document' });
+    }
+  });
+
   // Serve course documents via a proxy endpoint so external viewers can load them without exposing query tokens.
   const courseDocs: Record<string, string> = {
     'income-investing': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Ff6d7cfe0397347a9bf821fbeef4f4b24?alt=media&token=93be7fdc-bf13-463b-ac99-768362003904&apiKey=ca35db826797471cb8e33731c10b3ab1',
