@@ -220,6 +220,7 @@ export default function Learn() {
             Explore Full Learning Library
           </button>
         </div>
+        </div>
       </div>
     </MotionContainer>
   );
