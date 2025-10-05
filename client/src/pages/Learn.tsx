@@ -1,6 +1,7 @@
 import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign } from "lucide-react";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
+import { Link } from "wouter";
 
 const indicators = [
   {
@@ -59,6 +60,24 @@ const indicators = [
   },
 ];
 
+const courses = [
+  {
+    title: 'Income Investing',
+    href: '/courses/income-investing',
+    blurb: 'Build stable cash flow with dividends and interest.',
+  },
+  {
+    title: 'Stock Investing',
+    href: '/courses/stock-investing',
+    blurb: 'Master fundamentals to pick long-term winners.',
+  },
+  {
+    title: 'Stock Trading',
+    href: '/courses/stock-trading',
+    blurb: 'Learn technicals and strategies for active trading.',
+  },
+];
+
 export default function Learn() {
   return (
     <MotionContainer className="bg-background min-h-screen py-20" data-testid="page-learn">
@@ -68,6 +87,31 @@ export default function Learn() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Master financial concepts and indicators to make informed investment decisions
           </p>
+        </div>
+
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-semibold text-foreground">Free Courses</h3>
+            <div className="h-px flex-1 ml-6 bg-border" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {courses.map((course, i) => (
+              <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
+                <h4 className="text-xl font-bold text-foreground mb-2">{course.title}</h4>
+                <p className="text-sm text-muted-foreground mb-4">{course.blurb}</p>
+                <Link href={course.href}>
+                  <a className="inline-block px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90">Start Course</a>
+                </Link>
+              </MotionItem>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-semibold text-foreground">Tips & Formulas</h3>
+            <div className="h-px flex-1 ml-6 bg-border" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
