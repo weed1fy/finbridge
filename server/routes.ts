@@ -218,6 +218,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Convert DOCX to HTML server-side and serve as HTML
+  app.get('/courses/html/:id', async (req, res) => {
+    const id = req.params.id;
+    const url = courseDocs[id];
+    if (!url) return res.status(404).send('Document not found');
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) return res.status(502).send('Failed to fetch upstream document');
+
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
+      const result = await mammoth.convertToHtml({ buffer });
+      const html = result.value || '<p>No content</p>';
+
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.send(html);
+    } catch (err) {
+      console.error('Error converting document to HTML:', err);
+      res.status(500).send('Error converting document');
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
