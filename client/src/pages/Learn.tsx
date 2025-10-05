@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen } from "lucide-react";
+import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
@@ -9,19 +9,19 @@ const courses = [
     slug: 'stock-trading',
     title: 'Stock Trading with Technical Analysis',
     description: 'Practical course covering technical indicators, chart patterns, and short-term trading techniques.',
-    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F58d9f01979a24a22b84a5e4ecbf44956?alt=media&token=024c66b2-7b02-4425-bcdb-a0459e4729e1&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    url: '/learn/courses/stock-trading',
   },
   {
     slug: 'stock-investing',
     title: 'Stock Investing with Fundamental Analysis',
     description: 'Long-term investing course focused on fundamentals, valuation and building a resilient portfolio.',
-    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F98130912e8b74cc7b49368622974c070?alt=media&token=515822c1-7295-4173-a312-6c47f4fd8fca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    url: '/learn/courses/stock-investing',
   },
   {
     slug: 'income-investing',
     title: 'Income Investing',
     description: 'Course that teaches dividend strategies, income generation and conservative portfolio construction.',
-    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Faa0d9ed465ae42ceaedc8ae65c4eca19?alt=media&token=e0aa017c-0c33-4a20-8da6-b61186729aca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    url: '/learn/courses/income-investing',
   },
 ];
 
@@ -35,7 +35,7 @@ const indicators = [
   {
     icon: Percent,
     title: 'Return on Equity (ROE)',
-    description: 'Shows how efficiently a company uses shareholders\' money to generate profit. Higher ROE (>20%) indicates better performance.',
+    description: "Shows how efficiently a company uses shareholders' money to generate profit. Higher ROE (>20%) indicates better performance.",
     formula: 'ROE = (Net Income ÷ Equity) × 100',
   },
   {
@@ -47,7 +47,7 @@ const indicators = [
   {
     icon: Building,
     title: 'Market Capitalization',
-    description: 'Total value of company\'s shares. If 10M shares at PKR 100 each = PKR 1B market cap. Shows company size and stability.',
+    description: "Total value of company's shares. If 10M shares at PKR 100 each = PKR 1B market cap. Shows company size and stability.",
     formula: 'MCap = Shares × Price',
   },
   {
@@ -59,7 +59,7 @@ const indicators = [
   {
     icon: Scale,
     title: 'Debt/Equity Ratio',
-    description: 'Shows company\'s leverage. PKR 400M debt with PKR 200M equity = 2.0 ratio. Lower is safer; <0.5 is considered low risk.',
+    description: "Shows company's leverage. PKR 400M debt with PKR 200M equity = 2.0 ratio. Lower is safer; <0.5 is considered low risk.",
     formula: 'D/E = Total Debt ÷ Total Equity',
   },
   {
@@ -71,7 +71,7 @@ const indicators = [
   {
     icon: Droplet,
     title: 'Current Ratio',
-    description: 'Checks if company can pay short-term bills. PKR 600K assets vs PKR 300K liabilities = 2.0. Ratio >2 shows strong liquidity.',
+    description: "Checks if company can pay short-term bills. PKR 600K assets vs PKR 300K liabilities = 2.0. Ratio >2 shows strong liquidity.",
     formula: 'CR = Current Assets ÷ Current Liabilities',
   },
   {
@@ -88,66 +88,74 @@ export default function Learn() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Learn Before You Invest</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Master financial concepts and indicators to make informed investment decisions
-          </p>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Master financial concepts and indicators to make informed investment decisions</p>
         </div>
 
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-6">Courses</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-            {courses.map((course) => {
-              return (
-                <Link key={course.slug} href={`/learn/courses/${course.slug}`}>
-                  <MotionItem className="bg-card rounded-lg p-4 border border-border hover:shadow-lg transition-shadow cursor-pointer">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-10 h-10 bg-primary/8 rounded-md flex items-center justify-center mt-1">
-                        <BookOpen className="text-primary" size={20} />
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-muted-foreground">Course</div>
-                        <h4 className="text-base font-semibold text-foreground">{course.title}</h4>
-                        <p className="text-sm text-muted-foreground mt-2">{course.description}</p>
-                      </div>
-                    </div>
+        {/* Courses section (simple, clear cards) */}
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-foreground">Courses</h3>
+            <Link href="/learn" className="text-sm text-muted-foreground hover:underline">See all</Link>
+          </div>
 
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="text-xs text-muted-foreground">DOCX • View online</div>
-                      <div className="text-sm text-primary">Open →</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {courses.map((course) => (
+              <Link key={course.slug} href={course.url}>
+                <MotionItem className="bg-card rounded-lg p-4 border border-border hover:shadow-lg transition-shadow cursor-pointer">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="w-10 h-10 bg-primary/8 rounded-md flex items-center justify-center mt-1">
+                      <BookOpen className="text-primary" size={18} />
                     </div>
-                  </MotionItem>
-                </Link>
-              );
-            })}
+                    <div>
+                      <div className="text-sm font-medium text-muted-foreground">Course</div>
+                      <h4 className="text-base font-semibold text-foreground">{course.title}</h4>
+                      <p className="text-sm text-muted-foreground mt-2">{course.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="text-xs text-muted-foreground">DOCX • View online</div>
+                    <div className="text-sm text-primary">Open →</div>
+                  </div>
+                </MotionItem>
+              </Link>
+            ))}
           </div>
 
           <hr className="my-10 border-t border-border" />
+        </section>
 
-        </div>
+        {/* Tips & Formulas section */}
+        <section>
+          <div className="mt-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-semibold text-foreground">Tips & Formulas</h3>
+              <div className="h-px flex-1 ml-6 bg-border" />
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {indicators.map((indicator, index) => {
-            const Icon = indicator.icon;
-            return (
-              <MotionItem key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-indicator-${index}`}>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="text-primary" size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{indicator.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{indicator.description}</p>
-                <div className="bg-muted rounded-lg p-3">
-                  <div className="text-xs text-muted-foreground mb-1">Formula</div>
-                  <div className="font-mono text-sm text-foreground">{indicator.formula}</div>
-                </div>
-              </MotionItem>
-            );
-          })}
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {indicators.map((indicator, index) => {
+                const Icon = indicator.icon;
+                return (
+                  <MotionItem key={index} className="bg-card rounded-xl p-6 border border-border hover-lift" data-testid={`card-indicator-${index}`}>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                      <Icon className="text-primary" size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-3">{indicator.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{indicator.description}</p>
+                    <div className="bg-muted rounded-lg p-3">
+                      <div className="text-xs text-muted-foreground mb-1">Formula</div>
+                      <div className="font-mono text-sm text-foreground">{indicator.formula}</div>
+                    </div>
+                  </MotionItem>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         <div className="text-center mt-16">
-          <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-explore-library">
-            Explore Full Learning Library
-          </button>
+          <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-explore-library">Explore Full Learning Library</button>
         </div>
       </div>
     </MotionContainer>
