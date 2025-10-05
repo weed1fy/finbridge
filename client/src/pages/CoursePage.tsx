@@ -43,6 +43,35 @@ export default function CoursePage({ title, docUrl }: CoursePageProps) {
     }
   }
 
+  // Try to auto-fetch and convert the proxied document if available
+  useState(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        setLoading(true);
+        const mammothLib = (window as any).mammoth;
+        if (!mammothLib) return;
+        const resp = await fetch(docUrl);
+        if (!resp.ok) return;
+        const buf = await resp.arrayBuffer();
+        const result = await mammothLib.convertToHtml({ arrayBuffer: buf }, {
+          convertImage: mammothLib.images.inline(function(element: any) {
+            return element.read('base64').then(function(imageBuffer: string) {
+              return { src: 'data:' + element.contentType + ';base64,' + imageBuffer };
+            });
+          })
+        });
+        if (mounted) setUploadedHtml(result.value);
+      } catch (err) {
+        // ignore - user can upload manually
+        console.warn('Auto-convert failed', err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+    return () => { mounted = false; };
+  });
+
   return (
     <MotionContainer className="bg-background min-h-screen py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
