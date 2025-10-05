@@ -14,6 +14,9 @@ import StockTradingCourse from "@/pages/courses/StockTrading";
 import StockInvestingCourse from "@/pages/courses/StockInvesting";
 import IncomeInvestingCourse from "@/pages/courses/IncomeInvesting";
 import NotFound from "@/pages/not-found";
+import IncomeInvesting from "@/pages/courses/IncomeInvesting";
+import StockInvesting from "@/pages/courses/StockInvesting";
+import StockTrading from "@/pages/courses/StockTrading";
 
 function Router() {
   return (
@@ -29,6 +32,9 @@ function Router() {
         <Route path="/learn/courses/stock-investing" component={StockInvestingCourse} />
         <Route path="/learn/courses/income-investing" component={IncomeInvestingCourse} />
         <Route path="/learn" component={Learn} />
+        <Route path="/courses/income-investing" component={IncomeInvesting} />
+        <Route path="/courses/stock-investing" component={StockInvesting} />
+        <Route path="/courses/stock-trading" component={StockTrading} />
         <Route component={NotFound} />
       </Switch>
     </>
