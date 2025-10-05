@@ -1,4 +1,4 @@
-import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign } from "lucide-react";
+import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp } from "lucide-react";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
 import { Link } from "wouter";
@@ -65,16 +65,22 @@ const courses = [
     title: 'Income Investing',
     href: '/courses/income-investing',
     blurb: 'Build stable cash flow with dividends and interest.',
+    Icon: DollarSign,
+    accent: 'from-yellow-400 to-orange-400',
   },
   {
     title: 'Stock Investing',
     href: '/courses/stock-investing',
     blurb: 'Master fundamentals to pick long-term winners.',
+    Icon: BookOpen,
+    accent: 'from-sky-400 to-indigo-500',
   },
   {
     title: 'Stock Trading',
     href: '/courses/stock-trading',
     blurb: 'Learn technicals and strategies for active trading.',
+    Icon: TrendingUp,
+    accent: 'from-emerald-400 to-teal-600',
   },
 ];
 
@@ -96,10 +102,29 @@ export default function Learn() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {courses.map((course, i) => (
-              <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
-                <h4 className="text-xl font-bold text-foreground mb-2">{course.title}</h4>
-                <p className="text-sm text-muted-foreground mb-4">{course.blurb}</p>
-                <Link href={course.href} className="inline-block px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90">Start Course</Link>
+              <MotionItem key={i} className="group bg-card rounded-xl p-6 border border-border hover-lift transition-transform transform hover:-translate-y-2">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start">
+                    <div className={`w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-lg mr-4`}>
+                      <course.Icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-foreground mb-1">{course.title}</h4>
+                      <p className="text-sm text-muted-foreground">{course.blurb}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Free</span>
+                    <Link href={course.href} className="inline-flex items-center px-3 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-95">
+                      Start
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="mt-4 text-xs text-muted-foreground">
+                  <span className="inline-block align-middle">A short, well-structured course — estimated time: </span>
+                  <span className="font-mono text-foreground ml-2">1–2 hrs</span>
+                </div>
               </MotionItem>
             ))}
           </div>
