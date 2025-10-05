@@ -187,6 +187,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(preset);
   });
 
+  // Serve course documents via a proxy endpoint so external viewers can load them without exposing query tokens.
+  const courseDocs: Record<string, string> = {
+    'income-investing': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Ff6d7cfe0397347a9bf821fbeef4f4b24?alt=media&token=93be7fdc-bf13-463b-ac99-768362003904&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    'stock-investing': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Fe1a5761f9fa44ab98787183eee34c065?alt=media&token=b590b695-6e58-43f1-819f-418f97bf3f45&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    'stock-trading': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F6334288fbb4b4667af07062ece679ac5?alt=media&token=7cea295c-ca95-4e20-b87a-55f3b9acffaf&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  };
+
+  app.get('/courses/doc/:id', async (req, res) => {
+    const id = req.params.id;
+    const url = courseDocs[id];
+    if (!url) return res.status(404).json({ message: 'Document not found' });
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        return res.status(502).json({ message: 'Failed to fetch upstream document' });
+      }
+
+      const contentType = response.headers.get('content-type') || 'application/octet-stream';
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+
+      const arrayBuffer = await response.arrayBuffer();
+      res.send(Buffer.from(arrayBuffer));
+    } catch (err) {
+      console.error('Error proxying document:', err);
+      res.status(500).json({ message: 'Error fetching document' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
