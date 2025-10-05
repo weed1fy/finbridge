@@ -242,10 +242,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.send(buffer);
       }
 
-      console.log('Converting DOCX to HTML (images will be skipped for performance)...');
+      console.log('Converting DOCX to HTML (images will be substituted with lightweight placeholders)...');
+
+      // helper to escape HTML for embedding in SVG
+      function escapeHtml(str: string) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
       const result = await mammothModule.convertToHtml({ buffer }, {
-        convertImage: mammothModule.images.inline(function() {
-          return Promise.resolve({ src: '' });
+        convertImage: mammothModule.images.inline(function(element: any) {
+          // use alt text if present, capped to 80 chars
+          const altText = (element.altText || '').toString().slice(0, 80) || 'Image omitted';
+          const text = altText;
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200"><rect width="100%" height="100%" fill="#f3f4f6"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="14" fill="#6b7280" font-family="Arial, sans-serif">${escapeHtml(text)}</text></svg>`;
+          const dataUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+          return Promise.resolve({ src: dataUrl, alt: text });
         })
       });
 
