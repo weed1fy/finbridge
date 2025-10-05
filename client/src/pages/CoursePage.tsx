@@ -44,11 +44,12 @@ export default function CoursePage({ title, docUrl }: CoursePageProps) {
   }
 
   // Try to auto-fetch and convert the proxied document if available
-  useState(() => {
+  useEffect(() => {
     let mounted = true;
     (async () => {
       try {
         setLoading(true);
+        // @ts-ignore
         const mammothLib = (window as any).mammoth;
         if (!mammothLib) return;
         const resp = await fetch(docUrl);
@@ -70,7 +71,7 @@ export default function CoursePage({ title, docUrl }: CoursePageProps) {
       }
     })();
     return () => { mounted = false; };
-  });
+  }, [docUrl]);
 
   return (
     <MotionContainer className="bg-background min-h-screen py-20">
