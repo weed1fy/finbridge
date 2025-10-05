@@ -98,7 +98,7 @@ export default function Learn() {
             {courses.map((course) => {
               return (
                 <Link key={course.slug} href={`/learn/courses/${course.slug}`}>
-                  <MotionItem className="bg-card rounded-xl p-6 border border-border hover-lift cursor-pointer">
+                  <MotionItem className="bg-card rounded-lg p-4 border border-border hover:shadow-lg transition-shadow cursor-pointer">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
