@@ -4,7 +4,7 @@ export default function IncomeInvesting() {
   return (
     <CoursePage
       title="Income Investing"
-      docUrl="/courses/html/income-investing"
+      docUrl="/courses/doc/income-investing"
     />
   );
 }
