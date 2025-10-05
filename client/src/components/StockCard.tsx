@@ -81,10 +81,8 @@ export default function StockCard({ stock }: StockCardProps) {
             {formatCAPMResult(expectedReturn)}
           </div>
         </div>
-        <Link href={`/stock/${stock.symbol}`}>
-          <button className="text-primary hover:text-primary/80 transition-colors flex items-center" data-testid={`button-view-details-${stock.symbol}`}>
-            View Details <ArrowRight size={16} className="ml-1" />
-          </button>
+        <Link href={`/stock/${stock.symbol}`} className="text-primary hover:text-primary/80 transition-colors flex items-center" data-testid={`button-view-details-${stock.symbol}`}>
+          View Details <ArrowRight size={16} className="ml-1" />
         </Link>
       </div>
     </motion.div>

@@ -1,6 +1,7 @@
-import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign } from "lucide-react";
+import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp, ArrowRight } from "lucide-react";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
+import { Link } from "wouter";
 
 const indicators = [
   {
@@ -59,6 +60,30 @@ const indicators = [
   },
 ];
 
+const courses = [
+  {
+    title: 'Income Investing',
+    href: '/courses/income-investing',
+    blurb: 'Build stable cash flow with dividends and interest.',
+    Icon: DollarSign,
+    accent: 'from-yellow-400 to-orange-400',
+  },
+  {
+    title: 'Stock Investing',
+    href: '/courses/stock-investing',
+    blurb: 'Master fundamentals to pick long-term winners.',
+    Icon: BookOpen,
+    accent: 'from-sky-400 to-indigo-500',
+  },
+  {
+    title: 'Stock Trading',
+    href: '/courses/stock-trading',
+    blurb: 'Learn technicals and strategies for active trading.',
+    Icon: TrendingUp,
+    accent: 'from-emerald-400 to-teal-600',
+  },
+];
+
 export default function Learn() {
   return (
     <MotionContainer className="bg-background min-h-screen py-20" data-testid="page-learn">
@@ -68,6 +93,56 @@ export default function Learn() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Master financial concepts and indicators to make informed investment decisions
           </p>
+        </div>
+
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-semibold text-foreground">Free Courses</h3>
+            <div className="h-px flex-1 ml-6 bg-border" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {courses.map((course, i) => (
+              <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-start">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${course.accent} text-white shadow-md mr-4`}>
+                      <course.Icon size={18} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-foreground mb-1">{course.title}</h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{course.blurb}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex-1">
+                    {/* a short teaser area that mirrors the tips card structure */}
+                    <div className="bg-muted rounded-lg p-3">
+                      <div className="text-xs text-muted-foreground mb-1">What you'll learn</div>
+                      <ul className="list-disc pl-5 text-sm text-foreground">
+                        <li>Key concepts and frameworks</li>
+                        <li>Practical examples & charts</li>
+                        <li>Actionable takeaways</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground flex items-center"><BookOpen size={14} className="mr-2" /> <span>Format</span> <span className="font-mono text-foreground ml-2">DOCX</span></span>
+                    <Link href={course.href} className="inline-flex items-center px-3 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-95">
+                      Open <ArrowRight size={14} className="ml-2" />
+                    </Link>
+                  </div>
+                </div>
+              </MotionItem>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-semibold text-foreground">Tips & Formulas</h3>
+            <div className="h-px flex-1 ml-6 bg-border" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

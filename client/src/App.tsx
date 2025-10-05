@@ -11,6 +11,9 @@ import SMIF from "@/pages/SMIF";
 import About from "@/pages/About";
 import Learn from "@/pages/Learn";
 import NotFound from "@/pages/not-found";
+import IncomeInvesting from "@/pages/courses/IncomeInvesting";
+import StockInvesting from "@/pages/courses/StockInvesting";
+import StockTrading from "@/pages/courses/StockTrading";
 
 function Router() {
   return (
@@ -23,6 +26,9 @@ function Router() {
         <Route path="/smif" component={SMIF} />
         <Route path="/about" component={About} />
         <Route path="/learn" component={Learn} />
+        <Route path="/courses/income-investing" component={IncomeInvesting} />
+        <Route path="/courses/stock-investing" component={StockInvesting} />
+        <Route path="/courses/stock-trading" component={StockTrading} />
         <Route component={NotFound} />
       </Switch>
     </>
