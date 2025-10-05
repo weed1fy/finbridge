@@ -187,6 +187,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(preset);
   });
 
+  // Proxy route to fetch and serve DOCX files by slug
+  app.get('/api/docs/:slug', async (req, res) => {
+    const slug = req.params.slug;
+    const mapping: Record<string, string> = {
+      'stock-trading': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F58d9f01979a24a22b84a5e4ecbf44956?alt=media&token=024c66b2-7b02-4425-bcdb-a0459e4729e1&apiKey=ca35db826797471cb8e33731c10b3ab1',
+      'stock-investing': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F98130912e8b74cc7b49368622974c070?alt=media&token=515822c1-7295-4173-a312-6c47f4fd8fca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+      'income-investing': 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Faa0d9ed465ae42ceaedc8ae65c4eca19?alt=media&token=e0aa017c-0c33-4a20-8da6-b61186729aca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+    };
+
+    const remoteUrl = mapping[slug];
+    if (!remoteUrl) return res.status(404).json({ message: 'Document not found' });
+
+    try {
+      const resp = await fetch(remoteUrl);
+      if (!resp.ok) return res.status(502).json({ message: 'Failed to fetch remote document' });
+
+      const contentType = resp.headers.get('content-type') || 'application/octet-stream';
+      const buffer = Buffer.from(await resp.arrayBuffer());
+
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Content-Length', String(buffer.length));
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.send(buffer);
+    } catch (err) {
+      console.error('Error proxying document:', err);
+      res.status(500).json({ message: 'Error fetching document' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
