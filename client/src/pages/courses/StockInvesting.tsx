@@ -4,7 +4,7 @@ export default function StockInvesting() {
   return (
     <CoursePage
       title="Stock Investing"
-      docUrl="/courses/doc/stock-investing"
+      docUrl="/courses/html/stock-investing"
     />
   );
 }
