@@ -2,7 +2,6 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { readFileSync } from "fs";
 import { join } from "path";
-import mammoth from "mammoth";
 import { Stock, FilterCriteria, filterCriteriaSchema, capmInputSchema } from "@shared/schema";
 
 // Load stock data from attached JSON file
@@ -232,10 +231,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
+      // Try to dynamically import mammoth for conversion; if not available, return the raw file
+      let mammothModule: any = null;
+      try {
+        mammothModule = (await import('mammoth'))?.default ?? (await import('mammoth'));
+      } catch (e) {
+        console.warn('mammoth not available, serving original document instead:', e);
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        return res.send(buffer);
+      }
+
       console.log('Converting DOCX to HTML (images will be skipped for performance)...');
-      const result = await mammoth.convertToHtml({ buffer }, {
-        convertImage: mammoth.images.inline(function() {
-          // Return an empty image src to avoid embedding large base64 images
+      const result = await mammothModule.convertToHtml({ buffer }, {
+        convertImage: mammothModule.images.inline(function() {
           return Promise.resolve({ src: '' });
         })
       });
