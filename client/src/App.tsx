@@ -25,6 +25,9 @@ function Router() {
         <Route path="/stock/:symbol" component={StockDetail} />
         <Route path="/smif" component={SMIF} />
         <Route path="/about" component={About} />
+        <Route path="/learn/courses/stock-trading" component={StockTradingCourse} />
+        <Route path="/learn/courses/stock-investing" component={StockInvestingCourse} />
+        <Route path="/learn/courses/income-investing" component={IncomeInvestingCourse} />
         <Route path="/learn" component={Learn} />
         <Route component={NotFound} />
       </Switch>
