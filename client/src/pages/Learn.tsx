@@ -92,6 +92,42 @@ export default function Learn() {
           </p>
         </div>
 
+        <div>
+          <h3 className="text-2xl font-bold text-foreground mb-6">Courses</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+            {courses.map((course) => {
+              return (
+                <Link key={course.slug} href={`/learn/courses/${course.slug}`}>
+                  <MotionItem className="bg-card rounded-xl p-6 border border-border hover-lift cursor-pointer">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <BookOpen className="text-primary" size={24} />
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium text-muted-foreground">Course</div>
+                          <h4 className="text-lg font-bold text-foreground">{course.title}</h4>
+                        </div>
+                      </div>
+                      <div className="text-xs text-muted-foreground">Open</div>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground mb-4">{course.description}</p>
+
+                    <div className="bg-muted rounded-lg p-3 mt-2">
+                      <div className="text-xs text-muted-foreground mb-1">Format</div>
+                      <div className="font-mono text-sm text-foreground">DOCX (view in browser)</div>
+                    </div>
+                  </MotionItem>
+                </Link>
+              );
+            })}
+          </div>
+
+          <hr className="my-10 border-t border-border" />
+
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {indicators.map((indicator, index) => {
             const Icon = indicator.icon;
