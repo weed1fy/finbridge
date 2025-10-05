@@ -232,8 +232,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
-      const result = await mammoth.convertToHtml({ buffer });
-      const html = result.value || '<p>No content</p>';
+      console.log('Converting DOCX to HTML (images will be skipped for performance)...');
+      const result = await mammoth.convertToHtml({ buffer }, {
+        convertImage: mammoth.images.inline(function() {
+          // Return an empty image src to avoid embedding large base64 images
+          return Promise.resolve({ src: '' });
+        })
+      });
+
+      let html = result.value || '<p>No content</p>';
+      // Small cleanup: limit size by truncating very long HTML (safety)
+      const maxLen = 200000; // 200KB
+      if (html.length > maxLen) {
+        html = html.slice(0, maxLen) + '<p class="text-muted-foreground">(Document trimmed for performance)</p>';
+      }
 
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.setHeader('Cache-Control', 'public, max-age=3600');
