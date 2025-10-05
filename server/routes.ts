@@ -220,6 +220,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Convert DOCX to HTML server-side and serve as HTML
   app.get('/courses/html/:id', async (req, res) => {
+    console.log('Received request for /courses/html/' + req.params.id + ' from', req.ip);
     const id = req.params.id;
     const url = courseDocs[id];
     if (!url) return res.status(404).send('Document not found');
