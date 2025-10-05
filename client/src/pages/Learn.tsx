@@ -1,4 +1,4 @@
-import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp } from "lucide-react";
+import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp, ArrowRight } from "lucide-react";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
 import { Link } from "wouter";
