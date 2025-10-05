@@ -1,7 +1,31 @@
+import React from "react";
+import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen } from "lucide-react";
+import { Link } from "wouter";
 import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp, ArrowRight } from "lucide-react";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
 import { Link } from "wouter";
+
+const courses = [
+  {
+    slug: 'stock-trading',
+    title: 'Stock Trading with Technical Analysis',
+    description: 'Practical course covering technical indicators, chart patterns, and short-term trading techniques.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F58d9f01979a24a22b84a5e4ecbf44956?alt=media&token=024c66b2-7b02-4425-bcdb-a0459e4729e1&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+  {
+    slug: 'stock-investing',
+    title: 'Stock Investing with Fundamental Analysis',
+    description: 'Long-term investing course focused on fundamentals, valuation and building a resilient portfolio.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F98130912e8b74cc7b49368622974c070?alt=media&token=515822c1-7295-4173-a312-6c47f4fd8fca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+  {
+    slug: 'income-investing',
+    title: 'Income Investing',
+    description: 'Course that teaches dividend strategies, income generation and conservative portfolio construction.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Faa0d9ed465ae42ceaedc8ae65c4eca19?alt=media&token=e0aa017c-0c33-4a20-8da6-b61186729aca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+];
 
 const indicators = [
   {
@@ -94,6 +118,36 @@ export default function Learn() {
             Master financial concepts and indicators to make informed investment decisions
           </p>
         </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-foreground mb-6">Courses</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+            {courses.map((course) => {
+              return (
+                <Link key={course.slug} href={`/learn/courses/${course.slug}`}>
+                  <MotionItem className="bg-card rounded-lg p-4 border border-border hover:shadow-lg transition-shadow cursor-pointer">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 bg-primary/8 rounded-md flex items-center justify-center mt-1">
+                        <BookOpen className="text-primary" size={20} />
+                      </div>
+                      <div>
+                        <div className="text-sm font-medium text-muted-foreground">Course</div>
+                        <h4 className="text-base font-semibold text-foreground">{course.title}</h4>
+                        <p className="text-sm text-muted-foreground mt-2">{course.description}</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="text-xs text-muted-foreground">DOCX • View online</div>
+                      <div className="text-sm text-primary">Open →</div>
+                    </div>
+                  </MotionItem>
+                </Link>
+              );
+            })}
+          </div>
+
+          <hr className="my-10 border-t border-border" />
 
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">

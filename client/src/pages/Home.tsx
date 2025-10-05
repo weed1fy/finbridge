@@ -12,7 +12,7 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
             alt="Modern financial district skyline"
-            className="w-full h-full object-cover object-center opacity-35 dark:opacity-25"
+            className="w-full h-full object-cover object-center opacity-55 dark:opacity-45"
           />
         </div>
 

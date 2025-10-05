@@ -10,6 +10,9 @@ import StockDetail from "@/pages/StockDetail";
 import SMIF from "@/pages/SMIF";
 import About from "@/pages/About";
 import Learn from "@/pages/Learn";
+import StockTradingCourse from "@/pages/courses/StockTrading";
+import StockInvestingCourse from "@/pages/courses/StockInvesting";
+import IncomeInvestingCourse from "@/pages/courses/IncomeInvesting";
 import NotFound from "@/pages/not-found";
 import IncomeInvesting from "@/pages/courses/IncomeInvesting";
 import StockInvesting from "@/pages/courses/StockInvesting";
@@ -25,6 +28,9 @@ function Router() {
         <Route path="/stock/:symbol" component={StockDetail} />
         <Route path="/smif" component={SMIF} />
         <Route path="/about" component={About} />
+        <Route path="/learn/courses/stock-trading" component={StockTradingCourse} />
+        <Route path="/learn/courses/stock-investing" component={StockInvestingCourse} />
+        <Route path="/learn/courses/income-investing" component={IncomeInvestingCourse} />
         <Route path="/learn" component={Learn} />
         <Route path="/courses/income-investing" component={IncomeInvesting} />
         <Route path="/courses/stock-investing" component={StockInvesting} />
