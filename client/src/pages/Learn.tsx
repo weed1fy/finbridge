@@ -99,9 +99,7 @@ export default function Learn() {
               <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
                 <h4 className="text-xl font-bold text-foreground mb-2">{course.title}</h4>
                 <p className="text-sm text-muted-foreground mb-4">{course.blurb}</p>
-                <Link href={course.href}>
-                  <a className="inline-block px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90">Start Course</a>
-                </Link>
+                <Link href={course.href} className="inline-block px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90">Start Course</Link>
               </MotionItem>
             ))}
           </div>
