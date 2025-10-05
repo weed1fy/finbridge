@@ -2,7 +2,6 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { readFileSync } from "fs";
 import { join } from "path";
-import mammoth from "mammoth";
 import { Stock, FilterCriteria, filterCriteriaSchema, capmInputSchema } from "@shared/schema";
 
 // Load stock data from attached JSON file
