@@ -1,10 +1,8 @@
 import React from "react";
-import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen } from "lucide-react";
-import { Link } from "wouter";
 import { BarChart3, Percent, Coins, Building, Activity, Scale, Calculator, Droplet, DollarSign, BookOpen, TrendingUp, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
-import { Link } from "wouter";
 
 const courses = [
   {
@@ -37,7 +35,7 @@ const indicators = [
   {
     icon: Percent,
     title: 'Return on Equity (ROE)',
-    description: 'Shows how efficiently a company uses shareholders\' money to generate profit. Higher ROE (>20%) indicates better performance.',
+    description: "Shows how efficiently a company uses shareholders' money to generate profit. Higher ROE (>20%) indicates better performance.",
     formula: 'ROE = (Net Income ÷ Equity) × 100',
   },
   {
@@ -49,7 +47,7 @@ const indicators = [
   {
     icon: Building,
     title: 'Market Capitalization',
-    description: 'Total value of company\'s shares. If 10M shares at PKR 100 each = PKR 1B market cap. Shows company size and stability.',
+    description: "Total value of company's shares. If 10M shares at PKR 100 each = PKR 1B market cap. Shows company size and stability.",
     formula: 'MCap = Shares × Price',
   },
   {
@@ -61,7 +59,7 @@ const indicators = [
   {
     icon: Scale,
     title: 'Debt/Equity Ratio',
-    description: 'Shows company\'s leverage. PKR 400M debt with PKR 200M equity = 2.0 ratio. Lower is safer; <0.5 is considered low risk.',
+    description: "Shows company's leverage. PKR 400M debt with PKR 200M equity = 2.0 ratio. Lower is safer; <0.5 is considered low risk.",
     formula: 'D/E = Total Debt ÷ Total Equity',
   },
   {
@@ -73,7 +71,7 @@ const indicators = [
   {
     icon: Droplet,
     title: 'Current Ratio',
-    description: 'Checks if company can pay short-term bills. PKR 600K assets vs PKR 300K liabilities = 2.0. Ratio >2 shows strong liquidity.',
+    description: "Checks if company can pay short-term bills. PKR 600K assets vs PKR 300K liabilities = 2.0. Ratio >2 shows strong liquidity.",
     formula: 'CR = Current Assets ÷ Current Liabilities',
   },
   {
@@ -84,7 +82,7 @@ const indicators = [
   },
 ];
 
-const courses = [
+const freeCourses = [
   {
     title: 'Income Investing',
     href: '/courses/income-investing',
@@ -155,7 +153,7 @@ export default function Learn() {
             <div className="h-px flex-1 ml-6 bg-border" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {courses.map((course, i) => (
+            {freeCourses.map((course, i) => (
               <MotionItem key={i} className="bg-card rounded-xl p-6 border border-border hover-lift">
                 <div className="flex flex-col h-full">
                   <div className="flex items-start">
@@ -169,7 +167,6 @@ export default function Learn() {
                   </div>
 
                   <div className="mt-6 flex-1">
-                    {/* a short teaser area that mirrors the tips card structure */}
                     <div className="bg-muted rounded-lg p-3">
                       <div className="text-xs text-muted-foreground mb-1">What you'll learn</div>
                       <ul className="list-disc pl-5 text-sm text-foreground">
@@ -222,6 +219,7 @@ export default function Learn() {
           <button className="px-8 py-4 gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-all hover-lift text-lg" data-testid="button-explore-library">
             Explore Full Learning Library
           </button>
+        </div>
         </div>
       </div>
     </MotionContainer>
