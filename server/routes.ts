@@ -224,7 +224,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const url = courseDocs[id];
     if (!url) return res.status(404).send('Document not found');
 
+    // If a pre-generated static HTML exists in server/static/courses, serve it directly (no conversion needed)
     try {
+      const staticPath = join(process.cwd(), 'server', 'static', 'courses', `${id}.html`);
+      try {
+        const stat = readFileSync(staticPath, 'utf-8');
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        console.log('Serving pre-generated static HTML for', id);
+        return res.send(stat);
+      } catch (e) {
+        // file not found — continue to dynamic path
+      }
+
       const response = await fetch(url);
       if (!response.ok) return res.status(502).send('Failed to fetch upstream document');
 
