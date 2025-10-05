@@ -21,19 +21,50 @@ export default function CoursePage({ title, docUrl }: CoursePageProps) {
         const contentType = resp.headers.get('content-type') || '';
         if (contentType.includes('text/html')) {
           const text = await resp.text();
-          if (mounted) setHtml(text);
-        } else {
-          // assume binary DOCX, convert client-side using mammoth (loaded via CDN)
-          const arrayBuffer = await resp.arrayBuffer();
-          // @ts-ignore
-          const mammothLib = (window as any).mammoth;
-          if (mammothLib) {
-            const result = await mammothLib.convertToHtml({ arrayBuffer });
-            if (mounted) setHtml(result.value || '<p>No content</p>');
-          } else {
-            // fallback: show download link
-            if (mounted) setHtml(`<p class="text-muted-foreground">Unable to render document in-browser. <a href="${docUrl}" target="_blank" rel="noreferrer" class="text-primary underline">Download source</a></p>`);
+
+          // Sanitize and clean potentially large/empty images to avoid rendering issues
+          try {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+
+            // remove any script or style tags for safety
+            doc.querySelectorAll('script, style').forEach(n => n.remove());
+
+            // Process images: remove images with empty src or extremely large data URIs
+            doc.querySelectorAll('img').forEach((img) => {
+              const src = img.getAttribute('src') || '';
+              if (!src || src.trim().length === 0) {
+                const placeholder = doc.createElement('div');
+                placeholder.textContent = img.getAttribute('alt') || 'Image omitted';
+                placeholder.className = 'text-muted-foreground bg-muted p-2 rounded my-2';
+                img.replaceWith(placeholder);
+              } else if (src.startsWith('data:') && src.length > 10000) {
+                // too large to inline, replace with download link
+                const link = doc.createElement('a');
+                link.href = src;
+                link.textContent = 'Image omitted (click to view)';
+                link.className = 'text-primary underline';
+                img.replaceWith(link);
+              } else {
+                // ensure images are lazy and constrained
+                img.setAttribute('loading', 'lazy');
+                img.style.maxWidth = '100%';
+                img.removeAttribute('width');
+                img.removeAttribute('height');
+              }
+            });
+
+            const cleaned = doc.documentElement.outerHTML;
+            if (mounted) setHtml(cleaned);
+          } catch (e) {
+            // if sanitization fails, fallback to raw
+            console.warn('Failed to sanitize course HTML', e);
+            if (mounted) setHtml(text);
           }
+        } else {
+          // binary or other content: do not attempt heavy client-side conversion
+          // Provide a clear download link and a lightweight message instead of in-browser conversion
+          if (mounted) setHtml(`<p class="text-muted-foreground">This course document is available for download. <a href="${docUrl.replace('/html/', '/doc/')}" target="_blank" rel="noreferrer" class="text-primary underline">Download the source document</a>.</p>`);
         }
       } catch (err) {
         console.error('Error loading course content:', err);
