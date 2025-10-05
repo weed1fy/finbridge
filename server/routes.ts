@@ -217,7 +217,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Convert DOCX to HTML server-side and serve as HTML
+  // Convert DOCX to HTML server-side and serve as HTML (mammoth is optional)
   app.get('/courses/html/:id', async (req, res) => {
     console.log('Received request for /courses/html/' + req.params.id + ' from', req.ip);
     const id = req.params.id;
@@ -231,16 +231,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
+      // Try to dynamically import mammoth. If it's not installed in the host env (Replit), fall back to a simple download page.
+      let mammothModule: any = null;
+      try {
+        const mod = await import('mammoth');
+        mammothModule = mod && (mod.default || mod);
+      } catch (e) {
+        console.warn('mammoth not available, serving fallback download page:', e?.message || e);
+        const dlUrl = `/courses/doc/${id}`;
+        const fallbackHtml = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${id}</title></head><body style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding:24px;">
+          <h1 style="font-size:20px;margin-bottom:8px;">${id.replace(/-/g, ' ')}</h1>
+          <p style="color:#6b7280;">Automatic server-side conversion is unavailable in this environment. You can download the source document and view it locally.</p>
+          <p><a href="${dlUrl}" target="_blank" rel="noreferrer">Download document</a></p>
+        </body></html>`;
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        return res.send(fallbackHtml);
+      }
+
       console.log('Converting DOCX to HTML (images will be skipped for performance)...');
-      const result = await mammoth.convertToHtml({ buffer }, {
-        convertImage: mammoth.images.inline(function() {
-          // Return an empty image src to avoid embedding large base64 images
+      const result = await mammothModule.convertToHtml({ buffer }, {
+        convertImage: mammothModule.images.inline(function() {
           return Promise.resolve({ src: '' });
         })
       });
 
       let html = result.value || '<p>No content</p>';
-      // Small cleanup: limit size by truncating very long HTML (safety)
       const maxLen = 200000; // 200KB
       if (html.length > maxLen) {
         html = html.slice(0, maxLen) + '<p class="text-muted-foreground">(Document trimmed for performance)</p>';
