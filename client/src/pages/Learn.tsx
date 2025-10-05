@@ -127,9 +127,9 @@ export default function Learn() {
                   </div>
 
                   <div className="mt-6 flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">Duration <span className="font-mono text-foreground ml-2">1–2 hrs</span></span>
+                    <span className="text-xs text-muted-foreground flex items-center"><BookOpen size={14} className="mr-2" /> <span>Format</span> <span className="font-mono text-foreground ml-2">DOCX</span></span>
                     <Link href={course.href} className="inline-flex items-center px-3 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-95">
-                      Start <ArrowRight size={14} className="ml-2" />
+                      Open <ArrowRight size={14} className="ml-2" />
                     </Link>
                   </div>
                 </div>
