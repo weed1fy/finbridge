@@ -10,6 +10,9 @@ import StockDetail from "@/pages/StockDetail";
 import SMIF from "@/pages/SMIF";
 import About from "@/pages/About";
 import Learn from "@/pages/Learn";
+import StockTradingCourse from "@/pages/courses/StockTrading";
+import StockInvestingCourse from "@/pages/courses/StockInvesting";
+import IncomeInvestingCourse from "@/pages/courses/IncomeInvesting";
 import NotFound from "@/pages/not-found";
 
 function Router() {
