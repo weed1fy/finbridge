@@ -3,6 +3,27 @@ import { Link } from "wouter";
 
 import { MotionContainer, MotionItem } from "@/components/Motion";
 
+const courses = [
+  {
+    slug: 'stock-trading',
+    title: 'Stock Trading with Technical Analysis',
+    description: 'Practical course covering technical indicators, chart patterns, and short-term trading techniques.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F58d9f01979a24a22b84a5e4ecbf44956?alt=media&token=024c66b2-7b02-4425-bcdb-a0459e4729e1&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+  {
+    slug: 'stock-investing',
+    title: 'Stock Investing with Fundamental Analysis',
+    description: 'Long-term investing course focused on fundamentals, valuation and building a resilient portfolio.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2F98130912e8b74cc7b49368622974c070?alt=media&token=515822c1-7295-4173-a312-6c47f4fd8fca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+  {
+    slug: 'income-investing',
+    title: 'Income Investing',
+    description: 'Course that teaches dividend strategies, income generation and conservative portfolio construction.',
+    url: 'https://cdn.builder.io/o/assets%2Fca35db826797471cb8e33731c10b3ab1%2Faa0d9ed465ae42ceaedc8ae65c4eca19?alt=media&token=e0aa017c-0c33-4a20-8da6-b61186729aca&apiKey=ca35db826797471cb8e33731c10b3ab1',
+  },
+];
+
 const indicators = [
   {
     icon: BarChart3,
